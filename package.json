@@ -1,6 +1,6 @@
 {
   "name": "dsh-emotion-profiles",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Emotion profiles for DeepSeek Harness: 12 built-in personalities, a per-profile 48-wide GRU (ONNX, offline-trained) that turns run records into valence/arousal deltas, half-life decay toward each baseline, and a <=60-character mood line injected into runtime context.",
   "type": "module",
   "main": "src/index.js",

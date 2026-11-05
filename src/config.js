@@ -9,7 +9,7 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 
 export const ROOT_DIRNAME = 'emotion-profiles'
-export const PLUGIN_VERSION = '0.1.0'
+export const PLUGIN_VERSION = '0.1.1'
 
 export const DEFAULT_CONFIG = {
   /** Profile used when no active id has ever been recorded. */

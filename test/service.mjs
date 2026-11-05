@@ -121,6 +121,40 @@ try {
     assert.ok(back.state.revision >= 2, 'curious state should keep its revision')
   })
 
+  await ok('a storageDomain that mounts late adopts its durable active profile', async () => {
+    // Simulate the cold-boot order: init() had to fall back to _active.json,
+    // then the storageDomain owner comes up with a different recorded id.
+    assert.equal(service.activeStore.mode, 'file')
+    assert.ok(existsSync(join(root, '_active.json')))
+
+    const global = { activeProfileId: 'gentle', switchedAt: 1, revision: 1 }
+    let closed = false
+    const domain = {
+      global: {
+        get: () => global,
+        set: async (value) => {
+          Object.assign(global, value)
+        },
+      },
+      close: async () => {
+        closed = true
+      },
+    }
+    const facility = { open: async () => domain }
+    const childCtx = { get: (name) => (name === 'storageDomain' ? facility : null) }
+
+    await service.attachDomain(childCtx)
+    assert.equal(service.activeStore.mode, 'domain')
+    assert.equal(service.activeId, 'gentle')
+    assert.equal(service.state.profileId, 'gentle')
+    assert.ok(!existsSync(join(root, '_active.json')), 'the fallback file should be removed')
+
+    // Idempotent: a second injection must not re-open or close the adopted store.
+    await service.attachDomain(childCtx)
+    assert.equal(closed, false)
+    assert.equal(service.activeStore.mode, 'domain')
+  })
+
   await ok('creating a custom profile reuses a base net and activates it', async () => {
     const created = await service.createProfile({
       id: 'muse',

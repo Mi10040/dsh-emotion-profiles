@@ -51,6 +51,7 @@ export class EmotionService {
     this.activeId = null
     this.state = null
     this.ready = false
+    this.domainAttached = false
     this.queue = Promise.resolve()
     this.histories = new Map()
     this.lastRun = null
@@ -94,8 +95,68 @@ export class EmotionService {
     this.state = fromSnapshot(this.stateStore.load(profile.id), profile) ?? createState(profile)
     decayToward(this.state, Date.now(), this.config.decay)
     this.stateStore.saveNow(this.state)
+    this.domainAttached = this.activeStore?.mode === 'domain'
     this.ready = true
     return this
+  }
+
+  /**
+   * Adopt the storageDomain record once that service is available.
+   *
+   * On a cold boot the plugin can activate before `storageDomain` is mounted, in
+   * which case `init()` falls back to `_active.json`. This method runs from a
+   * `ctx.inject(['storageDomain'])` child fiber, opens the real domain, lets its
+   * recorded profile win, flushes the fallback snapshot, and releases the file
+   * store. Safe to call repeatedly; a no-op when the domain is already in use or
+   * absent.
+   */
+  async attachDomain(ctx) {
+    if (this.domainAttached) return
+    let store = null
+    try {
+      store = await openActiveStore(ctx, { rootDir: this.rootDir, logger: this.logger })
+    } catch (error) {
+      this.logger?.warn?.(`could not open the storageDomain record: ${error instanceof Error ? error.message : String(error)}`)
+      return
+    }
+    if (!store || store.mode !== 'domain') {
+      try {
+        await store?.close?.()
+      } catch {
+        // nothing to release
+      }
+      return
+    }
+
+    this.domainAttached = true
+    const previous = this.activeStore
+    const recorded = await store.get()
+    const target = recorded && this.registry.has(recorded) ? recorded : null
+
+    if (target && target !== this.activeId) {
+      // The fallback chose a default; the durable record is authoritative.
+      this.stateStore.saveNow(decayToward(this.state, Date.now(), this.config.decay))
+      this.activeId = target
+      const profile = this.registry.get(target)
+      this.state = fromSnapshot(this.stateStore.load(target), profile) ?? createState(profile)
+      decayToward(this.state, Date.now(), this.config.decay)
+      this.stateStore.saveNow(this.state)
+    }
+
+    this.activeStore = store
+    if (!recorded || !target) {
+      try {
+        await store.set(this.activeId)
+      } catch (error) {
+        this.logger?.warn?.(`could not write the active profile to storageDomain: ${error instanceof Error ? error.message : String(error)}`)
+      }
+    }
+    try {
+      await previous?.close?.()
+    } catch {
+      // the fallback store holds no resources
+    }
+    this.logger?.debug?.(`adopted storageDomain record: ${this.activeId}`)
   }
 
   historyFor(profileId) {

@@ -7,6 +7,7 @@
  */
 import { join } from 'node:path'
 import { readJson, writeJsonAtomic } from './util/fsx.js'
+import { PLUGIN_VERSION } from './config.js'
 
 export const SETTINGS_FILE = 'settings.json'
 export const SETTINGS_FORMAT = 'dsh-emotion-profiles/settings'
@@ -26,7 +27,7 @@ export function writeSettingsOverrides(rootDir, overrides) {
   writeJsonAtomic(join(rootDir, SETTINGS_FILE), {
     format: SETTINGS_FORMAT,
     schemaVersion: SETTINGS_SCHEMA_VERSION,
-    pluginVersion: '0.1.0',
+    pluginVersion: PLUGIN_VERSION,
     writtenAt: Date.now(),
     overrides,
   })

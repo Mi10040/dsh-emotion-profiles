@@ -10,6 +10,7 @@
 import { join } from 'node:path'
 import { ensureDir, appendJsonLine, writeJsonAtomic } from '../util/fsx.js'
 import { rowFromRun, neutralRow } from '../emotion-net/features.js'
+import { PLUGIN_VERSION } from '../config.js'
 
 export function exportConsolidation({ rootDir, records, profiles }) {
   const stamp = new Date().toISOString().replace(/[:.]/g, '-')
@@ -51,7 +52,7 @@ export function exportConsolidation({ rootDir, records, profiles }) {
   const manifest = {
     format: 'dsh-emotion-profiles/consolidation',
     schemaVersion: 1,
-    pluginVersion: '0.1.0',
+    pluginVersion: PLUGIN_VERSION,
     exportedAt: new Date().toISOString(),
     records: count,
     profiles: [...seenProfiles].sort(),

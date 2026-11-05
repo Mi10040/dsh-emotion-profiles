@@ -101,8 +101,17 @@ export async function apply(ctx, rawConfig = {}) {
 
   ctx.effect(() => ctx.tools.register(makeSwitchTool(service)))
 
-  const routes = registerRoutes(ctx, service, { logger })
-  if (!routes) logger.debug('settings API not registered (no webServer/connection in this profile)')
+  // Optional services can mount after this plugin on a cold boot (the profile
+  // loads bundles asynchronously). A child fiber waits for them instead of
+  // sampling `ctx.get()` once at apply time: the settings API and the
+  // storageDomain record therefore appear as soon as their owners are up.
+  ctx.inject(['storageDomain'], (childCtx) => {
+    void service.attachDomain(childCtx)
+  })
+
+  ctx.inject(['webServer', 'connection'], (childCtx) => {
+    registerRoutes(childCtx, service, { logger })
+  })
 
   logger.debug(`ready: active=${service.activeId} storage=${service.activeStore.mode} root=${rootDir}`)
 }

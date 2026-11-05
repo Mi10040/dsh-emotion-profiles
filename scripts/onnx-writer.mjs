@@ -11,6 +11,7 @@
  * following onnx.proto field numbers, with float tensors carried in `raw_data`.
  */
 import { INPUT_DIM, WINDOW, HIDDEN, OUT_DIM } from '../src/emotion-net/net.js'
+import { PLUGIN_VERSION } from '../src/config.js'
 
 // ── protobuf primitives ──────────────────────────────────────────────────────
 function uvarint(n) {
@@ -99,7 +100,7 @@ function model({ graphProto, opset = 17, producer = 'dsh-emotion-profiles' }) {
   return Buffer.concat([
     fVarint(1, 8), // ir_version
     fString(2, producer),
-    fString(3, '0.1.0'),
+    fString(3, PLUGIN_VERSION),
     fBytes(7, graphProto),
     fBytes(8, opsetId),
   ])

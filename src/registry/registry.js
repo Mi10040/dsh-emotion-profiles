@@ -8,6 +8,7 @@
 import { join } from 'node:path'
 import { BUILTIN_PROFILES } from './builtins.js'
 import { readJson, writeJsonAtomic } from '../util/fsx.js'
+import { PLUGIN_VERSION } from '../config.js'
 
 export const REGISTRY_FORMAT = 'dsh-emotion-profiles/registry'
 export const REGISTRY_SCHEMA_VERSION = 1
@@ -100,7 +101,7 @@ export class ProfileRegistry {
     const doc = {
       format: REGISTRY_FORMAT,
       schemaVersion: REGISTRY_SCHEMA_VERSION,
-      pluginVersion: '0.1.0',
+      pluginVersion: PLUGIN_VERSION,
       revision: this.revision + 1,
       writtenAt: Date.now(),
       profiles: [...this.custom.values()].sort((a, b) => a.createdAt - b.createdAt),

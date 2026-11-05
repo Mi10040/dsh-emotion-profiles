@@ -6,6 +6,8 @@
  * plugin; only the general idea (a versioned envelope, atomic writes) is
  * borrowed.
  */
+import { PLUGIN_VERSION } from '../config.js'
+
 export const RUN_FORMAT = 'dsh-emotion-profiles/run'
 export const RUN_SCHEMA_VERSION = 1
 export const RUN_STATUSES = ['completed', 'aborted', 'blocked', 'failed', 'empty']
@@ -70,7 +72,7 @@ export function buildRunRecord(parts) {
   const record = {
     format: RUN_FORMAT,
     schemaVersion: RUN_SCHEMA_VERSION,
-    pluginVersion: '0.1.0',
+    pluginVersion: PLUGIN_VERSION,
     writtenAt: Date.now(),
 
     id: `${parts.sessionId}:${parts.turn}`,
