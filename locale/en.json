@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Emotion profiles",
+    "description": "Twelve built-in personalities plus your own: each finished turn becomes a RunRecord, a built-in 48-wide GRU (ONNX, trained offline) yields valence/arousal deltas, half-life decay pulls the state back to baseline, and the mood is injected as one line of at most 60 characters."
+  }
+}

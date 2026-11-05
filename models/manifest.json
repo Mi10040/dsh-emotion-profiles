@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "format": "dsh-emotion-profiles/models",
+  "hidden": 48,
+  "input": [
+    8,
+    12
+  ],
+  "output": [
+    2
+  ],
+  "opset": 17,
+  "trainedAt": "2026-11-05T05:13:21.638Z",
+  "profiles": {
+    "gentle": {
+      "file": "gentle.onnx",
+      "bytes": 40792,
+      "sha256": "020abd1ba3b4b4d2ecb84dc2698366c2365120229536f4e1cfa3031994c85bb2",
+      "seed": 1101,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.093075,
+      "probeGood": [
+        0.2718,
+        -0.1025
+      ],
+      "probeBad": [
+        -0.2905,
+        0.1645
+      ],
+      "trainedInMs": 2142
+    },
+    "cold": {
+      "file": "cold.onnx",
+      "bytes": 40792,
+      "sha256": "2b5c4322f9cb210bc8273a0287736d17c999cca12da41d87fdaf376d3fc354f1",
+      "seed": 1102,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.032654,
+      "probeGood": [
+        0.1667,
+        -0.0517
+      ],
+      "probeBad": [
+        -0.2465,
+        0.1417
+      ],
+      "trainedInMs": 2686
+    },
+    "passionate": {
+      "file": "passionate.onnx",
+      "bytes": 40792,
+      "sha256": "bf4aaf546626fa7d8891aeed5045d8c2c71092d292a0ba9369678932f0f8caef",
+      "seed": 1103,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.185605,
+      "probeGood": [
+        0.2784,
+        -0.1791
+      ],
+      "probeBad": [
+        -0.2929,
+        0.1846
+      ],
+      "trainedInMs": 3055
+    },
+    "joyful": {
+      "file": "joyful.onnx",
+      "bytes": 40792,
+      "sha256": "ede56e6539e8cb6118fe0fbfbacbd2eda8041ba63abac3de6c959c297bee4b0a",
+      "seed": 1104,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.125695,
+      "probeGood": [
+        0.2718,
+        -0.1398
+      ],
+      "probeBad": [
+        -0.2921,
+        0.1425
+      ],
+      "trainedInMs": 3034
+    },
+    "sad": {
+      "file": "sad.onnx",
+      "bytes": 40792,
+      "sha256": "fec219eb0cf770f8bf3bb8a29cec706e237560f2c33688aa9a95228f3b83762d",
+      "seed": 1105,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.091557,
+      "probeGood": [
+        0.2639,
+        -0.0849
+      ],
+      "probeBad": [
+        -0.2941,
+        0.1689
+      ],
+      "trainedInMs": 3071
+    },
+    "angry": {
+      "file": "angry.onnx",
+      "bytes": 40792,
+      "sha256": "cde6a01abdb977186841a800816b434d60f8a7ff645e0437b3d7a69e1491a663",
+      "seed": 1106,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.142853,
+      "probeGood": [
+        0.2961,
+        -0.1563
+      ],
+      "probeBad": [
+        -0.2841,
+        0.1727
+      ],
+      "trainedInMs": 2964
+    },
+    "anxious": {
+      "file": "anxious.onnx",
+      "bytes": 40792,
+      "sha256": "7b6d12f1f7dabc08aa426b1489bbbf3206d374bdd09857a26b8a3848029f9490",
+      "seed": 1107,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.141034,
+      "probeGood": [
+        0.2507,
+        -0.1924
+      ],
+      "probeBad": [
+        -0.2789,
+        0.1787
+      ],
+      "trainedInMs": 2954
+    },
+    "calm": {
+      "file": "calm.onnx",
+      "bytes": 40792,
+      "sha256": "5185dc1433f7e0fc31b62a00b41fa992b012c86ff1526fb3fa79978f948493dd",
+      "seed": 1108,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.128884,
+      "probeGood": [
+        0.2107,
+        -0.0865
+      ],
+      "probeBad": [
+        -0.2926,
+        0.184
+      ],
+      "trainedInMs": 2936
+    },
+    "playful": {
+      "file": "playful.onnx",
+      "bytes": 40792,
+      "sha256": "0257528f7d7a7c89df538b40b694320c469bd2ffc7ee922850c9f978da6d2f52",
+      "seed": 1109,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.119467,
+      "probeGood": [
+        0.2171,
+        -0.1834
+      ],
+      "probeBad": [
+        -0.2973,
+        0.0807
+      ],
+      "trainedInMs": 2925
+    },
+    "tender": {
+      "file": "tender.onnx",
+      "bytes": 40792,
+      "sha256": "8c955d0f7a9a1bf5b4c5fd1150a453aee30856252c8c6e2388eb49e86868f335",
+      "seed": 1110,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.119931,
+      "probeGood": [
+        0.2738,
+        -0.0905
+      ],
+      "probeBad": [
+        -0.2953,
+        0.1628
+      ],
+      "trainedInMs": 2896
+    },
+    "proud": {
+      "file": "proud.onnx",
+      "bytes": 40792,
+      "sha256": "5836c74a1f24da59c8db05e7d568b541ac052624fab12ae313ed0a1e4fe9d868",
+      "seed": 1111,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.091475,
+      "probeGood": [
+        0.2508,
+        -0.1356
+      ],
+      "probeBad": [
+        -0.2971,
+        0.1785
+      ],
+      "trainedInMs": 2903
+    },
+    "curious": {
+      "file": "curious.onnx",
+      "bytes": 40792,
+      "sha256": "b6220571d8b62521d8ffdd6fb9f56cbd8fe36b549d945c3700b9096e559bbeb7",
+      "seed": 1112,
+      "samples": 224,
+      "epochs": 55,
+      "evalLoss": 0.138455,
+      "probeGood": [
+        0.2719,
+        -0.1871
+      ],
+      "probeBad": [
+        -0.2905,
+        0.1791
+      ],
+      "trainedInMs": 2911
+    }
+  }
+}
