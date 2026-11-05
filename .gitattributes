@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+# ONNX models and the WASM runtime are binary payloads.
+*.onnx binary
+*.wasm binary

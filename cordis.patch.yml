@@ -1,0 +1,15 @@
+# dsh-emotion-profiles bundle patch — applied automatically when the package is
+# installed as a bundle in a profile.
+#
+# The user's own profile cordis.patch.yml is applied AFTER bundle layers and
+# wins per row, so this row can still be overridden there.
+#
+# The plugin is self-contained: it needs no shipped harness row, no recall row,
+# and no extra service. `systemPrompt`, `storageDomain`, `webServer` and
+# `connection` are looked up defensively, so a profile without them still
+# activates (the plugin then degrades to file storage and skips its settings API).
+
+- insert:
+    - id: emotion-profiles
+      name: dsh-emotion-profiles
+      config: {}

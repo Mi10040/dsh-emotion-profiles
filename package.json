@@ -1,0 +1,64 @@
+{
+  "name": "dsh-emotion-profiles",
+  "version": "0.1.0",
+  "description": "Emotion profiles for DeepSeek Harness: 12 built-in personalities, a per-profile 48-wide GRU (ONNX, offline-trained) that turns run records into valence/arousal deltas, half-life decay toward each baseline, and a <=60-character mood line injected into runtime context.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "default": "./src/index.js"
+    },
+    "./client": {
+      "default": "./src/client.js"
+    },
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "icon": "./icon.svg",
+  "scripts": {
+    "train": "node scripts/train-nets.mjs",
+    "verify": "node scripts/verify-parity.mjs",
+    "test": "node test/smoke.mjs && node test/service.mjs && node test/client-render.mjs && node test/check-imports.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "files": [
+    "src",
+    "models",
+    "vendor",
+    "scripts",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "emotion",
+    "persona",
+    "onnx",
+    "gru",
+    "cordis"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mi10040/dsh-emotion-profiles.git"
+  },
+  "homepage": "https://github.com/Mi10040/dsh-emotion-profiles#readme",
+  "bugs": {
+    "url": "https://github.com/Mi10040/dsh-emotion-profiles/issues"
+  },
+  "license": "MIT"
+}

@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Mi10040
+Copyright (c) 2026 Mi10040 and dsh-emotion-profiles contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Bundled third-party notice
+
+vendor/ort/ contains onnxruntime-web (MIT License), Copyright (c) Microsoft
+Corporation. Its copyright and permission notice is retained verbatim in
+vendor/ort/ort.all.min.mjs and vendor/ort/ort-wasm-simd-threaded.mjs.

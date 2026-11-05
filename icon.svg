@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title">
+  <title id="title">Emotion profiles</title>
+  <defs>
+    <linearGradient id="warm" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF9F6E"/>
+      <stop offset=".45" stop-color="#FFC56B"/>
+      <stop offset="1" stop-color="#8079FF"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFD8A8"/>
+      <stop offset="1" stop-color="#B7B0FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#warm)"/>
+  <circle cx="32" cy="32" r="19.5" fill="none" stroke="url(#ring)" stroke-width="2" opacity=".85"/>
+  <g fill="#2C2338" opacity=".92">
+    <circle cx="25" cy="28.5" r="2.6"/>
+    <circle cx="39" cy="28.5" r="2.6"/>
+  </g>
+  <path d="M24 38.2c2.3 3.1 5 4.6 8 4.6s5.7-1.5 8-4.6" fill="none" stroke="#2C2338" stroke-width="2.6" stroke-linecap="round" opacity=".92"/>
+  <g stroke="#2C2338" stroke-width="1.7" stroke-linecap="round" opacity=".55">
+    <path d="M32 6.5v3.2"/>
+    <path d="M32 54.3v3.2"/>
+    <path d="M6.5 32h3.2"/>
+    <path d="M54.3 32h3.2"/>
+    <path d="M13.8 13.8l2.3 2.3"/>
+    <path d="M47.9 47.9l2.3 2.3"/>
+    <path d="M50.2 13.8l-2.3 2.3"/>
+    <path d="M16.1 47.9l-2.3 2.3"/>
+  </g>
+</svg>
